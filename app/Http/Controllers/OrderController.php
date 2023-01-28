@@ -19,7 +19,8 @@ class OrderController extends Controller
         ]);
 
         $order->products()->attach(Arr::flatten($save_params['data']));
+        $order->load('products');
 
-        (new TelegramService())->sendMessage();
+        (new TelegramService())->sendMessage($order);
     }
 }
