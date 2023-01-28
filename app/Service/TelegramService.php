@@ -7,9 +7,13 @@ use Illuminate\Support\Facades\Http;
 
 class TelegramService
 {
-    private string $token = '5862692795:AAEwKiM2yA4IJLYdNswFGF7RKwVrtZMxmJM';
+    private string $token;
 
-    public function getMe()
+    public function __construct()
+    {
+        $this->token = env('TELEGRAM_TOKEN');
+    }
+    public function sendMessage()
     {
         $client = new Client(['verify' => false]);
         $response = $client->get('https://api.telegram.org/bot'.$this->token.'/getMe');
