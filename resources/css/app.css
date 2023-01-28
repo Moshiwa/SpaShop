@@ -1,0 +1,9 @@
+.el-col-8 {
+    max-height: 100% !important;
+}
+.el-card-body {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    gap: 50px;
+}

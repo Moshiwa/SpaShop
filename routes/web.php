@@ -1,5 +1,7 @@
 <?php
 
+use App\Http\Controllers\OrderController;
+use App\Http\Controllers\ProductController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -13,6 +15,8 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('app');
+Route::get('/', [ProductController::class, 'index'])->name('index');
+
+Route::prefix('order')->name('order')->group(function () {
+    Route::post('/save', [OrderController::class, 'save'])->name('.save');
 });
